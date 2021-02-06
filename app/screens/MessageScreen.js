@@ -5,12 +5,11 @@ import {
   StyleSheet,
   Text,
   View,
-  SafeAreaView,
   Image,
-  Platform,
-  StatusBar,
 } from "react-native";
+import Screen from '../components/Screen'
 import Listitem from "../components/Listitem";
+import ListItemSeparator from "../components/ListItemSeparator";
 
 const messages = [
   {
@@ -29,26 +28,32 @@ const messages = [
 
 function MessageScreen(props) {
   return (
-    <SafeAreaView style={styles.screen}>
-    <FlatList
-      data={messages}
-      keyExtractor={(message) => message.id.toString()}
-      renderItem={({ item }) => (
-        <Listitem
-          title={item.title}
-          subTitle={item.subTitle}
-          image={item.image}
-        />
-      )}
-    />
-    </SafeAreaView>
+    <Screen>
+      <FlatList
+        data={messages}
+        keyExtractor={(message) => message.id.toString()}
+        renderItem={({ item }) => (
+          <Listitem
+          renderRightActions={() => {
+            <View style={{
+              backgroundColor : 'red',
+              width : 70
+            }}></View>
+          }}
+            title={item.title}
+            subTitle={item.description}
+            image={item.image}
+            onPress={() => console.log('pressed',item)}
+          />
+        )}
+        ItemSeparatorComponent={ListItemSeparator}
+      />
+    </Screen>
   );
 }
 
 const styles = StyleSheet.create({
-    screen : {
-        paddingTop : Platform.OS == 'android' ? setStatusBar.currentHeight : 0
-    }
-})
+
+});
 
 export default MessageScreen;
