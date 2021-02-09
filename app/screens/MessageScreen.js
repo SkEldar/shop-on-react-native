@@ -10,6 +10,7 @@ import {
 import Screen from '../components/Screen'
 import Listitem from "../components/Listitem";
 import ListItemSeparator from "../components/ListItemSeparator";
+import ListItemDeleteAction from "../components/ListItemDeleteAction";
 
 const messages = [
   {
@@ -34,12 +35,9 @@ function MessageScreen(props) {
         keyExtractor={(message) => message.id.toString()}
         renderItem={({ item }) => (
           <Listitem
-          renderRightActions={() => {
-            <View style={{
-              backgroundColor : 'red',
-              width : 70
-            }}></View>
-          }}
+          renderRightActions={
+            ListItemDeleteAction
+          }
             title={item.title}
             subTitle={item.description}
             image={item.image}
