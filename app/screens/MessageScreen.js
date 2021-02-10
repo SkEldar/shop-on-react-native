@@ -1,5 +1,4 @@
-import { setStatusBarBackgroundColor } from "expo-status-bar";
-import React from "react";
+import React, {useState} from "react";
 import {
   FlatList,
   StyleSheet,
@@ -12,7 +11,7 @@ import Listitem from "../components/Listitem";
 import ListItemSeparator from "../components/ListItemSeparator";
 import ListItemDeleteAction from "../components/ListItemDeleteAction";
 
-const messages = [
+const initialMessages = [
   {
     id: 1,
     title: "T1",
@@ -28,6 +27,12 @@ const messages = [
 ];
 
 function MessageScreen(props) {
+  const [messages, setMessages ] = useState(initialMessages);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const handleDelete = message => {
+    setMessages(messages.filter(m => m.id !== message.id));
+  }
   return (
     <Screen>
       <FlatList
@@ -35,8 +40,7 @@ function MessageScreen(props) {
         keyExtractor={(message) => message.id.toString()}
         renderItem={({ item }) => (
           <Listitem
-          renderRightActions={
-            ListItemDeleteAction
+          renderRightActions={() => <ListItemDeleteAction onPress={() => handleDelete(item)}/> 
           }
             title={item.title}
             subTitle={item.description}
@@ -45,6 +49,17 @@ function MessageScreen(props) {
           />
         )}
         ItemSeparatorComponent={ListItemSeparator}
+        refreshing={refreshing}
+        onRefresh={() => {
+          setMessages([
+            {
+              id: 2,
+              title: "T2",
+              description: "D2",
+              image: require("../assets/mosh.jpg"),
+            },
+          ])
+        }}
       />
     </Screen>
   );

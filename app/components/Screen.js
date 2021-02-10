@@ -1,26 +1,23 @@
-import React from 'react';
-import Constants from 'expo-constants'
+import React from "react";
+import Constants from "expo-constants";
 import {
-    FlatList,
-    StyleSheet,
-    Text,
-    View,
-    SafeAreaView,
-    Image,
-} from 'react-native'
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  Image,
+} from "react-native";
 
-function Screen({children}) {
-    return (
-        <SafeAreaView style={styles.screen}>
-                {children}
-        </SafeAreaView>
-    );
+function Screen({ children }) {
+  return <SafeAreaView style={styles.screen}>{children}</SafeAreaView>;
 }
 
 const styles = StyleSheet.create({
-    screen : {
-        paddingTop : Constants.statusBarHeight
-    }
-})
+  screen: {
+    paddingTop: Constants.statusBarHeight,
+    flex: 1,
+  },
+});
 
 export default Screen;
