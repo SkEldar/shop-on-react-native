@@ -20,12 +20,14 @@ const styles = StyleSheet.create({
         backgroundColor : colors.white,
         marginBottom : 20,
         overflow : 'hidden',
+        
     },
     detailsContainer : {
         padding : 20,
     },
     title : {
         marginBottom : 7,
+        marginLeft : 20
     },
     image : {
         width : '100%',
@@ -33,7 +35,9 @@ const styles = StyleSheet.create({
     },
     subTitle : {
         color : colors.secondary,
-        fontWeight : 'bold'
+        fontWeight : 'bold',
+        marginLeft : 20
+
     }
 })
 
