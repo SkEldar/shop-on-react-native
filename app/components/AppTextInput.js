@@ -8,6 +8,7 @@ import {
   TouchableHighlight,
   TextInput,
 } from "react-native";
+import defaultStyles from '../config/styles'
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 function AppTextInput({ icon, ...otherProps }) {
   return (
@@ -20,7 +21,7 @@ function AppTextInput({ icon, ...otherProps }) {
           style={styles.icon}
         />
       )}
-      <TextInput style={styles.TextInput} {...otherProps} />
+      <TextInput style={defaultStyles.text} {...otherProps} />
     </View>
   );
 }
@@ -36,11 +37,6 @@ const styles = StyleSheet.create({
   },
   icon: {
     marginRight: 10,
-  },
-  TextInput: {
-    fontSize: 18,
-    color : colors.dark,
-    fontFamily: Platform.OS === "android" ? "Robot" : "Avenir",
   },
 });
 
