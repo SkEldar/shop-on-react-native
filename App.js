@@ -7,6 +7,7 @@ import {
   SafeAreaView,
   TextInput,
   Switch,
+  Button
 } from "react-native";
 import AppButton from "./app/components/AppButton";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
@@ -51,3 +52,4 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
+
