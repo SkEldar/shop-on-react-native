@@ -9,6 +9,7 @@ import {
   Switch,
   Button
 } from "react-native";
+import LoginScreen from './app/components/LoginScreen'
 import AppButton from "./app/components/AppButton";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 import Card from "./app/components/Card";
@@ -32,16 +33,8 @@ const categories = [
 export default function App() {
   const [category, setCategory] = useState();
   return (
-    <Screen>
-      <AppPicker
-        selectItem={category}
-        onSelectItem={(item) => setCategory(item)}
-        items={categories}
-        placeholder="Category"
-        icon="apps"
-      />
-      <AppTextInput placeholder="Email" icon="email" />
-    </Screen>
+    <LoginScreen />
+
   );
 }
 
