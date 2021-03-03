@@ -23,6 +23,7 @@ import AccountScreen from "./app/screens/AccountScreen";
 import ListingsScreen from "./app/screens/ListingsScreen";
 import AppTextInput from "./app/components/AppTextInput";
 import AppPicker from "./app/components/AppPicker";
+import ListingEditScreen from './app/screens/ListingEditScreen';
 
 const categories = [
   { label: "Furniture", value: 1 },
@@ -33,8 +34,7 @@ const categories = [
 export default function App() {
   const [category, setCategory] = useState();
   return (
-    <LoginScreen />
-
+    <ListingEditScreen />
   );
 }
 
