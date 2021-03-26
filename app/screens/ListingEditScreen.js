@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet,Text } from "react-native";
 import * as Yup from "yup";
 
 import {
@@ -26,7 +26,7 @@ const categories = [
 function ListingEditScreen() {
   return (
     <Screen style={styles.container}>
-      <Form
+       <Form
         initialValues={{
           title: "",
           price: "",
@@ -61,6 +61,7 @@ function ListingEditScreen() {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
+
   },
 });
 

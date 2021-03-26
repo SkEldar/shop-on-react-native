@@ -11,17 +11,16 @@
   } from "react-native";
   import {Formik} from 'formik';
  function AppForm({children,initialValues, onSubmit,validationSchema}) {
+   console.log({children})
      return (
         <Formik
         validationSchema={validationSchema}
         initialValues={initialValues}
         onSubmit={onSubmit}
       >
-          {() => (
-              <>
-                {children}
-              </>
-          )}
+            <>
+            {children}
+            </>
       </Formik>
      );
  }

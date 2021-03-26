@@ -4,6 +4,7 @@ import AppText from "./AppText";
 import colors from "../config/colors";
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 
+
 function Listitem({ImageComponent,renderRightActions, title, subTitle, image, onPress }) {
   return (
     <Swipeable renderRightActions={renderRightActions}>
