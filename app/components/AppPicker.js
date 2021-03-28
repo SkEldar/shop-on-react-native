@@ -15,15 +15,23 @@ import Screen from "../components/Screen";
 import AppText from "../components/AppText";
 import defaultStyles from "../config/styles";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import PIckerItem from "./PIckerItem";
+import PickerItem from "./PickerItem";
 
-function AppPicker({ selectItem,onSelectItem,items, icon, placeholder,}) {
+function AppPicker({
+  PickerItemComponent = PickerItem,
+  selectItem,
+  onSelectItem,
+  items,
+  icon,
+  placeholder,
+  width = "100%",
+}) {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
-        <View style={styles.container}>
+        <View style={[styles.container, {width}]}>
           {icon && (
             <MaterialCommunityIcons
               name={icon}
@@ -34,13 +42,9 @@ function AppPicker({ selectItem,onSelectItem,items, icon, placeholder,}) {
           )}
 
           {selectItem ? (
-            <AppText style={styles.text}>
-            {selectItem.label}
-            </AppText>
+            <AppText style={styles.text}>{selectItem.label}</AppText>
           ) : (
-            <AppText style={styles.placeholder}>
-            {placeholder}
-            </AppText>
+            <AppText style={styles.placeholder}>{placeholder}</AppText>
           )}
           <MaterialCommunityIcons
             name="chevron-down"
@@ -52,16 +56,18 @@ function AppPicker({ selectItem,onSelectItem,items, icon, placeholder,}) {
       <Modal visible={modalVisible} animationType="slide">
         <Screen>
           <Button title="close" onPress={() => setModalVisible(false)} />
-          <FlatList 
-            data={items}          
-            keyExtractor={item => item.value}
-            renderItem={({item}) => <PIckerItem 
-            label={item.label}
-            onPress={() => {
-                setModalVisible(false);
-                onSelectItem(item);
-            }}
-            />}
+          <FlatList
+            data={items}
+            keyExtractor={(item) => item.value}
+            renderItem={({ item }) => (
+              <PickerItemComponent
+                label={item.label}
+                onPress={() => {
+                  setModalVisible(false);
+                  onSelectItem(item);
+                }}
+              />
+            )}
           />
         </Screen>
       </Modal>
@@ -74,7 +80,6 @@ const styles = StyleSheet.create({
     backgroundColor: defaultStyles.colors.light,
     borderRadius: 25,
     flexDirection: "row",
-    width: "100%",
     padding: 15,
     marginVertical: 10,
   },
@@ -84,10 +89,10 @@ const styles = StyleSheet.create({
   text: {
     flex: 1,
   },
-  placeholder : {
-    color : defaultStyles.colors.medium,
-    flex : 1,
-  }
+  placeholder: {
+    color: defaultStyles.colors.medium,
+    flex: 1,
+  },
 });
 
 export default AppPicker;
